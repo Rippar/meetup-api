@@ -12,21 +12,6 @@ import java.util.List;
 public class MeetupMapperImpl implements MeetupMapper {
 
     @Override
-    public List<MeetupDto> mapEntityListToDtoList(List<Meetup> meetups) {
-        List<MeetupDto> meetupDtos = new ArrayList<>();
-
-        for (Meetup meetup : meetups) {
-            MeetupDto temp = new MeetupDto(meetup.getId(), meetup.getTopic(), meetup.getDescription(),
-                    meetup.getOrganizer(), meetup.getTime(), meetup.getLocation());
-
-            meetupDtos.add(temp);
-
-        }
-
-        return meetupDtos;
-    }
-
-    @Override
     public MeetupDto mapEntityToDto(Meetup meetup) {
         return new MeetupDto(meetup.getId(), meetup.getTopic(), meetup.getDescription(), meetup.getOrganizer(),
                 meetup.getTime(), meetup.getLocation());

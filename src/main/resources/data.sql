@@ -13,3 +13,5 @@ VALUES ('Python Conference', 'Python meetup', 'Python community', '2022-12-17 16
 INSERT INTO meetup (topic, description, organizer, time, location)
 VALUES ('1C Conference', '1C meetup', '1C community', '2022-12-23 11:00', 'Russia');
 
+INSERT INTO meetup (topic, description, organizer, time, location)
+VALUES ('Java Conference', '1C meetup', 'Spring community', '2022-12-23 11:00', 'Belarus');

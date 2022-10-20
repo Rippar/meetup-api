@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -51,6 +52,15 @@ public class MeetupController {
     public void deleteMeetup(@PathVariable("meetupId") Long meetupId, @Validated @RequestBody MeetupDto meetupDto) {
         meetupDto.setId(meetupId);
         meetupService.deleteMeetup(meetupDto);
+    }
+
+    @GetMapping(path = "/getFiltered")
+    public List<MeetupDto> getFilteredMeetups(@RequestParam(value = "topic", required = false) String topic,
+                                              @RequestParam(value = "organizer", required = false) String organizer,
+                                              @RequestParam(value = "time", required = false) String time,
+                                              @RequestParam(value = "orderby", required = false) String orderBy) {
+
+        return meetupService.findFilteredMeetups(topic, organizer, time, orderBy);
     }
 
 

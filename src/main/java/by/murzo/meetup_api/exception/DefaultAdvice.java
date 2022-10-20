@@ -5,12 +5,19 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+
 @ControllerAdvice
 public class DefaultAdvice {
 
     @ExceptionHandler(MeetupNotFoundException.class)
-    public ResponseEntity<Response> handleException(MeetupNotFoundException e) {
+    public ResponseEntity<Response> handleMeetupNotFoundException(MeetupNotFoundException e) {
         Response response = new Response(e.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(IncorrectTimeInputException.class)
+    public ResponseEntity<Response> handleDateTimeParseException(IncorrectTimeInputException e) {
+        Response response = new Response(e.getMessage());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 }
