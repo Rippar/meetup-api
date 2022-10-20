@@ -56,15 +56,11 @@ public class MeetupRepositoryImpl implements MeetupRepository {
     public List<Meetup> getFilteredMeetups(String topic, String organizer, LocalDateTime time, String sortedBy) {
 
         StringBuilder stringQuery = new StringBuilder("from Meetup ");
-
         boolean isFirst = true;
 
         if (topic != null) {
-
             stringQuery.append("where topic = :topic");
-
             isFirst = false;
-
         }
 
         if (organizer != null) {
@@ -74,7 +70,6 @@ public class MeetupRepositoryImpl implements MeetupRepository {
             } else {
                 stringQuery.append(" and organizer = :organizer");
             }
-
             isFirst = false;
         }
 
@@ -85,7 +80,6 @@ public class MeetupRepositoryImpl implements MeetupRepository {
             } else {
                 stringQuery.append(" and time >= :time");
             }
-
         }
 
         if (sortedBy != null) {
@@ -93,7 +87,6 @@ public class MeetupRepositoryImpl implements MeetupRepository {
         }
 
         Session session = sessionFactory.getCurrentSession();
-
         Query query = session.createQuery(stringQuery.toString(), Meetup.class);
 
         setParamsToQuery(query, topic, organizer, time);
@@ -116,5 +109,4 @@ public class MeetupRepositoryImpl implements MeetupRepository {
             query.setParameter("time", time);
         }
     }
-
 }

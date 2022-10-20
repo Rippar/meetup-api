@@ -32,7 +32,7 @@ public class MeetupController {
         return meetupService.findAllMeetups();
     }
 
-    @GetMapping("get/{meetupId}")
+    @GetMapping("/get/{meetupId}")
     public MeetupDto getMeetupById(@PathVariable("meetupId") Long id) {
         return meetupService.findMeetupById(id);
     }
