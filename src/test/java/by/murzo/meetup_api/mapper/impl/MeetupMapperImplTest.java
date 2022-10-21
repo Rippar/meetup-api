@@ -22,8 +22,8 @@ public class MeetupMapperImplTest {
 
     @Test
     void mapEntityToDto_shouldReturnDto() {
-        Meetup meetupEntity = new Meetup(1L, "Topic", "description", "organizer", LocalDateTime.now(), "location");
-        MeetupDto meetupDto = new MeetupDto(1L, "Topic", "description", "organizer", LocalDateTime.now(), "location");
+        Meetup meetupEntity = new Meetup(1L, "Topic", "description", "organizer", LocalDateTime.MIN, "location");
+        MeetupDto meetupDto = new MeetupDto(1L, "Topic", "description", "organizer", LocalDateTime.MIN, "location");
 
         assertEquals(meetupDto, meetupMapper.mapEntityToDto(meetupEntity));
     }

@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  meetup-api:
+    container_name: meetup-api
+    depends_on:
+      - postgres
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+    build:
+      context: .
+    environment:
+      DB_USERNAME: ${DB_USERNAME:?dbUserNameNorProvided}
+      DB_PASSWORD: ${DB_PASSWORD:?dbPasswordNotProvided}
+      DB_NAME: ${DB_NAME:?dbNameNotProvided}
+      DB_HOST: postgres
+      DB_PORT: 5432
+      APP_PORT: ${APP_PORT:?appPortNotProvided}
+    restart: unless-stopped
+
+  postgres:
+    container_name: postgres
+    image: 'postgres:13.1-alpine'
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+    restart: unless-stopped

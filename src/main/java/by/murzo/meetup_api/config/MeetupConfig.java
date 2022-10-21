@@ -34,7 +34,6 @@ public class MeetupConfig {
 
     }
 
-
     @Bean
     public LocalSessionFactoryBean sessionFactory(DataSource dataSource) {
         LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
