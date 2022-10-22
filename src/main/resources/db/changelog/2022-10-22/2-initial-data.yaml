@@ -1,0 +1,120 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: Murzo
+      comment: "Insert data"
+      changes:
+        - insert:
+            tableName: meetup
+            columns:
+              - column:
+                  name: topic
+                  value: "Java Conference"
+              - column:
+                  name: description
+                  value: "Java meetup"
+              - column:
+                  name: organizer
+                  value: "Java community"
+              - column:
+                  name: time
+                  value: "2022-10-18 18:00"
+              - column:
+                  name: location
+                  value: "Belarus"
+        - insert:
+            tableName: meetup
+            columns:
+              - column:
+                  name: topic
+                  value: "DEVOPS Conference"
+              - column:
+                  name: description
+                  value: "Devops meetup"
+              - column:
+                  name: organizer
+                  value: "Devops community"
+              - column:
+                  name: time
+                  value: "2022-11-18 9:00"
+              - column:
+                  name: location
+                  value: "Poland"
+        - insert:
+            tableName: meetup
+            columns:
+              - column:
+                  name: topic
+                  value: "C# Conference"
+              - column:
+                  name: description
+                  value: "C# meetup"
+              - column:
+                  name: organizer
+                  value: "C# community"
+              - column:
+                  name: time
+                  value: "2022-11-01 10:00"
+              - column:
+                  name: location
+                  value: "Georgia"
+        - insert:
+            tableName: meetup
+            columns:
+              - column:
+                  name: topic
+                  value: "Python Conference"
+              - column:
+                  name: description
+                  value: "Python meetup"
+              - column:
+                  name: organizer
+                  value: "Python community"
+              - column:
+                  name: time
+                  value: "2022-12-17 16:00"
+              - column:
+                  name: location
+                  value: "Lithuania"
+
+  - changeSet:
+      id: 3
+      author: Murzo
+      comment: "Add some rows"
+      changes:
+        - insert:
+            tableName: meetup
+            columns:
+              - column:
+                  name: topic
+                  value: "1C Conference"
+              - column:
+                  name: description
+                  value: "1C meetup"
+              - column:
+                  name: organizer
+                  value: "1C community"
+              - column:
+                  name: time
+                  value: "2022-12-23 11:00"
+              - column:
+                  name: location
+                  value: "Russia"
+        - insert:
+            tableName: meetup
+            columns:
+              - column:
+                  name: topic
+                  value: "Java Conference"
+              - column:
+                  name: description
+                  value: "Web meetup"
+              - column:
+                  name: organizer
+                  value: "Spring community"
+              - column:
+                  name: time
+                  value: "2022-12-23 11:00"
+              - column:
+                  name: location
+                  value: "Belarus"

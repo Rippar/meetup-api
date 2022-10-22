@@ -1,0 +1,50 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Murzo
+      comment: "Create table"
+      changes:
+        - createTable:
+            tableName: meetup
+            columns:
+              - column:
+                  name: id
+                  type: bigserial
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+              - column:
+                  name: topic
+                  type: character varying(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: character varying(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: organizer
+                  type: character varying(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: time
+                  type: timestamp(6) without time zone
+                  constraints:
+                    nullable: false
+              - column:
+                  name: location
+                  type: character varying(50)
+
+  - changeSet:
+      id: 4
+      author: Murzo
+      comment: "Add constraint to location attribute"
+      changes:
+        - addNotNullConstraint:
+            columnName: location
+            tableName: meetup
+
+
+
