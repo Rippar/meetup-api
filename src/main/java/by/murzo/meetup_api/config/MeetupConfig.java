@@ -1,12 +1,10 @@
 package by.murzo.meetup_api.config;
 
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
@@ -41,7 +39,6 @@ public class MeetupConfig {
         factoryBean.setPackagesToScan(environment.getProperty("meetup.packages_to_scan"));
         factoryBean.setHibernateProperties(hibernateProperties());
 
-
         return factoryBean;
     }
 
@@ -52,12 +49,6 @@ public class MeetupConfig {
 
         return properties;
     }
-
-//    @Bean
-//    public HibernateTransactionManager getTransactionManager(SessionFactory sessionFactory) {
-//        HibernateTransactionManager transactionManager = new HibernateTransactionManager(sessionFactory);
-//        return transactionManager;
-//    }
 
 
 }
