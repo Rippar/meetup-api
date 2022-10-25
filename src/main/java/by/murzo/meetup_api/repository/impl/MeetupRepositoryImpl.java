@@ -4,10 +4,11 @@ import by.murzo.meetup_api.entity.Meetup;
 import by.murzo.meetup_api.repository.MeetupRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Query;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -87,15 +88,15 @@ public class MeetupRepositoryImpl implements MeetupRepository {
         }
 
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery(stringQuery.toString(), Meetup.class);
+        Query<Meetup> query = session.createQuery(stringQuery.toString(), Meetup.class);
 
         setParamsToQuery(query, topic, organizer, time);
 
-        return query.getResultList();
+        return query.list();
 
     }
 
-    private void setParamsToQuery(Query query, String topic, String organizer, LocalDateTime time) {
+    private void setParamsToQuery(Query<Meetup> query, String topic, String organizer, LocalDateTime time) {
 
         if (topic != null) {
             query.setParameter("topic", topic);
