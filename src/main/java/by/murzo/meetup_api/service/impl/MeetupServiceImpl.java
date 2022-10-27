@@ -29,12 +29,14 @@ public class MeetupServiceImpl implements MeetupService {
     }
 
     @Override
+    @Transactional
     public List<MeetupDto> findAllMeetups() {
         List<Meetup> meetups = meetupRepository.getAllMeetups();
         return meetups.stream().map(meetupMapper::mapEntityToDto).toList();
     }
 
     @Override
+    @Transactional
     public MeetupDto findMeetupById(Long id) {
         Meetup meetup = meetupRepository.getById(id).orElseThrow(() -> new MeetupNotFoundException("Meetup entity " +
                 "with id " + id + " hasn't been found"));
@@ -44,6 +46,7 @@ public class MeetupServiceImpl implements MeetupService {
     }
 
     @Override
+    @Transactional
     public void addMeetup(MeetupDto meetupDto) {
         Meetup meetup = meetupMapper.mapDtoToEntity(meetupDto);
         meetupRepository.saveMeetup(meetup);

@@ -5,8 +5,6 @@ import by.murzo.meetup_api.entity.Meetup;
 import by.murzo.meetup_api.mapper.MeetupMapper;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 public class MeetupMapperImpl implements MeetupMapper {
