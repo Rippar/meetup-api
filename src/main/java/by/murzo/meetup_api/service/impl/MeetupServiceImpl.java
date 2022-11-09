@@ -2,7 +2,6 @@ package by.murzo.meetup_api.service.impl;
 
 import by.murzo.meetup_api.dto.MeetupDto;
 import by.murzo.meetup_api.entity.Meetup;
-import by.murzo.meetup_api.exception.IncorrectTimeInputException;
 import by.murzo.meetup_api.exception.MeetupNotFoundException;
 import by.murzo.meetup_api.mapper.MeetupMapper;
 import by.murzo.meetup_api.repository.MeetupRepository;
@@ -13,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 
 @Service
@@ -69,18 +66,7 @@ public class MeetupServiceImpl implements MeetupService {
 
     @Override
     @Transactional
-    public List<MeetupDto> findFilteredMeetups(String topic, String organizer, String time, String sortedBy) {
-
-        LocalDateTime localDateTime;
-
-        try {
-            localDateTime = (time == null ? null : LocalDateTime.parse(time, DateTimeFormatter.ofPattern(
-                    "yyyy-MM-dd HH:mm")));
-
-        } catch (DateTimeParseException e) {
-            throw new IncorrectTimeInputException("Time parameter must match yyyy-MM-dd HH:mm pattern", e);
-        }
-
+    public List<MeetupDto> findFilteredMeetups(String topic, String organizer, LocalDateTime localDateTime, String sortedBy) {
 
         List<Meetup> meetups = meetupRepository.getFilteredMeetups(topic, organizer, localDateTime, sortedBy);
 

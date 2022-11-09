@@ -14,10 +14,5 @@ public class DefaultAdvice {
         Response response = new Response(e.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
-
-    @ExceptionHandler(IncorrectTimeInputException.class)
-    public ResponseEntity<Response> handleDateTimeParseException(IncorrectTimeInputException e) {
-        Response response = new Response(e.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-    }
+    
 }

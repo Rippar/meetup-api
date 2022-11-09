@@ -16,7 +16,7 @@ public interface MeetupService {
 
     void deleteMeetup(MeetupDto meetupDto);
 
-    List<MeetupDto> findFilteredMeetups(String topic, String organizer, String time, String sortedBy);
+    List<MeetupDto> findFilteredMeetups(String topic, String organizer, LocalDateTime localDateTime, String sortedBy);
 
 
 }
